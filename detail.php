@@ -403,7 +403,7 @@ body {
                 <a href="index.php">Beranda</a>
                 <a href="produk.php" class="active">Katalog</a>
                 <a href="tentang.php">Tentang Kami</a>
-                <a href="kontak.php">Kontak</a>
+                
             </nav>
         </div>
     </header>

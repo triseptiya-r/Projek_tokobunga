@@ -451,7 +451,7 @@ body {
             <div>
                 <h4>Kategori Produk</h4>
                 <p>Buket Bunga</p>
-                <p>Kue & Dessert</p>
+                
                 <p>Bunga Papan</p>
             </div>
             <div>
