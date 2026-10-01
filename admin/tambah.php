@@ -99,15 +99,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="text" name="nama" class="form-input" placeholder="Misal: Buket Mawar Merah Deluxe" required>
                 </div>
 
-                <div class="form-group">
-                    <label>Kategori</label>
-                    <select name="kategori" class="form-select" required>
-                        <option value="">-- Pilih Kategori --</option>
-                        <option value="Buket Mawar">Buket Mawar</option>
-                        <option value="Buket Lily">Buket Lily</option>
-                        <option value="Buket Chrysanthemum">Buket Chrysanthemum</option>
-                    </select>
-                </div>
+               <div class="form-group">
+    <label>Kategori</label>
+
+    <select name="kategori" class="form-select" required>
+
+        <option value="">
+            -- Pilih Kategori --
+        </option>
+
+        <option value="Buket Bunga">
+            Buket Bunga
+        </option>
+
+        <option value="Bunga Papan">
+            Bunga Papan
+        </option>
+
+        <option value="Bunga Meja">
+            Bunga Meja
+        </option>
+
+        <option value="Standing Flower">
+            Standing Flower
+        </option>
+
+        <option value="Hampers Bunga">
+            Hampers Bunga
+        </option>
+
+        <option value="Bunga Pernikahan">
+            Bunga Pernikahan
+        </option>
+
+    </select>
+</div>
+
 
                 <div class="form-row">
                     <div class="form-group">

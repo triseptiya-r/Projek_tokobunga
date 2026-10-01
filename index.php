@@ -5,7 +5,7 @@ $query = mysqli_query(
     $conn,
     "SELECT * FROM produk
      ORDER BY id DESC
-     LIMIT 6"
+     LIMIT 3"
 );
 ?>
 

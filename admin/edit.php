@@ -3,7 +3,6 @@
 session_start();
 
 require_once "../includes/auth.php";
-
 require_once "../config/database.php";
 
 $id = isset($_GET['id'])
@@ -19,19 +18,21 @@ $query = mysqli_query(
 $produk = mysqli_fetch_assoc($query);
 
 if (!$produk) {
-
     die("Produk tidak ditemukan.");
-
 }
 
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="id">
 
 <head>
 
-    <title>Edit Produk</title>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Produk - Nana Florist</title>
 
     <link rel="stylesheet" href="../assets/style.css">
 
@@ -46,6 +47,7 @@ if (!$produk) {
         <h1>Edit Produk</h1>
 
         <?php include "../includes/flash.php"; ?>
+
 
         <form
             action="proses_produk.php"
@@ -65,43 +67,88 @@ if (!$produk) {
                 value="<?= $produk['id']; ?>"
             >
 
+
+            <!-- Nama Produk -->
+
             <label>Nama Produk</label>
 
             <input
                 type="text"
                 name="nama"
                 value="<?= htmlspecialchars($produk['nama']); ?>"
+                placeholder="Contoh: Buket Mawar Merah"
                 required
             >
+
+
+            <!-- Kategori -->
 
             <label>Kategori</label>
 
             <select name="kategori" required>
 
-                <option value="Cake"
-                    <?= $produk['kategori'] == 'Cake' ? 'selected' : ''; ?>>
-                    Cake
+                <option value="">
+                    Pilih Kategori
                 </option>
 
-                <option value="Brownies"
-                    <?= $produk['kategori'] == 'Brownies' ? 'selected' : ''; ?>>
-                    Brownies
+                <option
+                    value="Buket Bunga"
+                    <?= $produk['kategori'] == 'Buket Bunga' ? 'selected' : ''; ?>
+                >
+                    Buket Bunga
                 </option>
 
-                <option value="Donat"
-                    <?= $produk['kategori'] == 'Donat' ? 'selected' : ''; ?>>
-                    Donat
+                <option
+                    value="Bunga Papan"
+                    <?= $produk['kategori'] == 'Bunga Papan' ? 'selected' : ''; ?>
+                >
+                    Bunga Papan
+                </option>
+
+                <option
+                    value="Bunga Meja"
+                    <?= $produk['kategori'] == 'Bunga Meja' ? 'selected' : ''; ?>
+                >
+                    Bunga Meja
+                </option>
+
+                <option
+                    value="Standing Flower"
+                    <?= $produk['kategori'] == 'Standing Flower' ? 'selected' : ''; ?>
+                >
+                    Standing Flower
+                </option>
+
+                <option
+                    value="Hampers Bunga"
+                    <?= $produk['kategori'] == 'Hampers Bunga' ? 'selected' : ''; ?>
+                >
+                    Hampers Bunga
+                </option>
+
+                <option
+                    value="Bunga Pernikahan"
+                    <?= $produk['kategori'] == 'Bunga Pernikahan' ? 'selected' : ''; ?>
+                >
+                    Bunga Pernikahan
                 </option>
 
             </select>
+
+
+            <!-- Deskripsi -->
 
             <label>Deskripsi</label>
 
             <textarea
                 name="deskripsi"
                 rows="5"
+                placeholder="Masukkan deskripsi produk..."
                 required
             ><?= htmlspecialchars($produk['deskripsi']); ?></textarea>
+
+
+            <!-- Harga -->
 
             <label>Harga</label>
 
@@ -109,8 +156,12 @@ if (!$produk) {
                 type="number"
                 name="harga"
                 value="<?= $produk['harga']; ?>"
+                min="0"
                 required
             >
+
+
+            <!-- Stok -->
 
             <label>Stok</label>
 
@@ -118,8 +169,12 @@ if (!$produk) {
                 type="number"
                 name="stok"
                 value="<?= $produk['stok']; ?>"
+                min="0"
                 required
             >
+
+
+            <!-- Gambar -->
 
             <label>Ganti Gambar</label>
 
@@ -129,32 +184,39 @@ if (!$produk) {
                 accept=".jpg,.jpeg,.png,.webp"
             >
 
-            <?php if ($produk['gambar']): ?>
+
+            <?php if (!empty($produk['gambar'])): ?>
 
                 <p>Gambar saat ini:</p>
 
                 <img
                     src="../uploads/produk/<?= htmlspecialchars($produk['gambar']); ?>"
-                    width="150"
+                    alt="<?= htmlspecialchars($produk['nama']); ?>"
+                    class="edit-product-image"
                 >
 
             <?php endif; ?>
 
-            <br><br>
 
-            <button
-                type="submit"
-                class="btn"
-            >
-                Update Produk
-            </button>
+            <!-- Tombol -->
 
-            <a
-                href="produk.php"
-                class="btn"
-            >
-                Kembali
-            </a>
+            <div class="edit-product-actions">
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Update Produk
+                </button>
+
+                <a
+                    href="produk.php"
+                    class="btn btn-secondary"
+                >
+                    Kembali
+                </a>
+
+            </div>
 
         </form>
 
